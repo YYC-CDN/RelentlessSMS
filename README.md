@@ -11,8 +11,10 @@ The first message is your personal one. After that is sent, the app will cycle t
 The logo is located on the C: drive. It's called logo.png. It's a simple circle logo generated in OpenAI with a transparent background. If there is no logo there, the script will ignore it and continue.
 
 Portions of code from https://chat.openai.com
+
 Graphics from https://openai.com/dall-e-2/
 
 API- head over here and fork out a couple of bucks to use a decent API
 Get it from https://textbelt.com/purchase/?generateKey=1
+
 Put your own API in the script between the quotes.
