@@ -9,6 +9,8 @@ An SMS Repeater, designed to send multiple anti-crime SMS messages. Written in P
 
 The app will cycle through several anti-crime messages. Cycles through over 100 messages in English, Spanish, Chinese, Hindu, Pakistani, North Korean, Russian & Nigerian. Each sent message will display in the window. Messages will be 160 characters or less. Toll free numbers are not allowed and the app assumes you are calling USA or Canada or any other +1 dialing country.
 
+The script will show you how many text credits you have left. Check the TEST box and you can test the app without using credits. I used Spyder for my development enviroment. You can run this script in Spyder and run it.
+
 The logo is located on the C: drive. It's called logo.png. It's a simple circle logo generated in OpenAI with a transparent background. If there is no logo there, the script will ignore it and continue.
 
 Portions of code from https://chat.openai.com
