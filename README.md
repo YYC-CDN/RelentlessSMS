@@ -1,6 +1,6 @@
 # RelentlessSMS
 
-An SMS Repeater, designed to send multiple anti-crime SMS messages. Written in Python, it uses the Textbelt.com API. 
+An SMS Repeater, designed to send multiple anti-crime SMS messages. Written in Python, it uses the Textbelt.com API. Why this one? It's the absolute easiest to use, and probably one of the least expensive. I've looked over and over and I can't find any good free solutions. So you gotta pay to play.
 
 1. Put in the target phone number
 2. Select the number of messages you want to send 
