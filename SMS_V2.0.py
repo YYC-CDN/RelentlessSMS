@@ -143,7 +143,7 @@ number_balance_label.grid(row=1, column=1, padx=185, pady=0, sticky="W")
 # root.after(1000, update_balance) # call the function every 1000 milliseconds
 
 # def update_balance():
-#     url = "https://textbelt.com/quota/e2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqXQc1ex0kff"
+#     url = "https://textbelt.com/quota/e2083c18271XQc1ex0kff"
 #     response = requests.get(url)
 #     balance = response.json().get("quotaRemaining", 0)
 #     account_balance_label["text"] = f"Remaining in Account: {balance}"
