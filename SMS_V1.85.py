@@ -2,13 +2,14 @@
 """
 Created on Thu Feb 16 15:15:15 2023
 
-@author: robrt
+@author: natasgnik
 """
 
 #=========================== IMPORTANT PLEASE READ ===============================
 # When you see this- it's a <SAMPLE_API> key. You need to replace every instance with 
 # yours. <SAMPLE_API> would be like e2083c182717842a1d4e7dacb2d374af80c51a2bX46e2qMf8iMXNRAqXQc1ex0kf
 # In this file, they are at lines 84, 87, and 114. Any that are commented out don't matter.
+# https://textbelt.com/purchase/?generateKey=1 will get you the API Key
 
 from tkinter import *
 import requests
