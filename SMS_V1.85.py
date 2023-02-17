@@ -20,7 +20,7 @@ import socket
 from tkinter import messagebox
 from tkinter import ttk
 
-version = "1.85 RC1"
+version = "1.85 "
 root = Tk()
 root.title("Relentless SMS® V{}".format(version))
 root.attributes("-topmost", True)
