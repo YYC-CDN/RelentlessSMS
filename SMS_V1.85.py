@@ -8,7 +8,8 @@ Created on Thu Feb 16 15:15:15 2023
 #=========================== IMPORTANT PLEASE READ ===============================
 # When you see this- it's a <SAMPLE_API> key. You need to replace every instance with 
 # yours. <SAMPLE_API> would be like e2083c182717842a1d4e7dacb2d374af80c51a2bX46e2qMf8iMXNRAqXQc1ex0kf
-# In this file, they are at lines 84, 87, and 114. Any that are commented out don't matter.
+# In this file, they are at lines 85, 88, and 116. Any that are commented out don't matter.
+# Pay attention to the _test variable @ line 86. This is so you can test without being deducted from your credits.
 # https://textbelt.com/purchase/?generateKey=1 will get you the API Key
 
 from tkinter import *
@@ -109,7 +110,7 @@ def send_sms():
 
     time.sleep(0.1)
 #show a messagebox indicating that all messages have been sent
-    messagebox.showinfo("Relentless SMS", "All messages have been sent. Good job, man. ")
+    messagebox.showinfo("Relentless SMS", "All messages have been sent. ")
 
     # Get account balance
 url = "https://textbelt.com/quota/<SAMPLE_API>"
@@ -482,7 +483,14 @@ anti_crime_messages = {
 root.mainloop()
 
 # https://textbelt.com/purchase/?generateKey=1 will get you the API Key
-# e2083c182717842a1d4e7dacb2d374af80c51a2bX46e2qMf8iMXNRAqXQc1ex0kf
+# 
+# Don't be cheap.  Trust me- I can't find any free North American API. They don't exist.
+# $3/50 texts (0.06 cents)
+# $5/200 texts (0.025 cents)
+# $10/700 texts (0.014 cents)
+# $23/1700 texts (0.013 cents)
+# $45/3500 texts (0.012 cents)
 
-
+# ============== NOTES ========================================================
+#https://visualtk.com/
 
