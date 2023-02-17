@@ -6,8 +6,8 @@ Created on Thu Feb 16 15:15:15 2023
 """
 
 #=========================== IMPORTANT PLEASE READ ===============================
-# When you see this- it's a SAMPLE API key. You need to replace every instance with 
-# yours. e2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqXQc1ex0kf
+# When you see this- it's a <SAMPLE_API> key. You need to replace every instance with 
+# yours. <SAMPLE_API> would be like e2083c182717842a1d4e7dacb2d374af80c51a2bX46e2qMf8iMXNRAqXQc1ex0kf
 # In this file, they are at lines 84, 87, and 114. Any that are commented out don't matter.
 
 from tkinter import *
@@ -81,10 +81,10 @@ def send_sms():
 
         if test_mode.get() == 1:
             # This API MUST have _test at the end, before the end quote.
-            api_key = "e2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqXQc1ex0kf_test"
+            api_key = "<SAMPLE_API>_test"
         else:
             # This is the regular API WItHOUT the _test at the end.
-            api_key = "e2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqXQc1ex0kf"
+            api_key = "<SAMPLE_API>"
 
         url = "https://textbelt.com/text"
         payload = {
@@ -111,7 +111,7 @@ def send_sms():
     messagebox.showinfo("Relentless SMS", "All messages have been sent. Good job, man. ")
 
     # Get account balance
-url = "https://textbelt.com/quota/e2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqXQc1ex0kf"
+url = "https://textbelt.com/quota/<SAMPLE_API>"
 response = requests.get(url)
 balance = response.json().get("quotaRemaining", 0)
 
@@ -141,7 +141,7 @@ number_balance_label.grid(row=1, column=1, padx=185, pady=0, sticky="W")
 # root.after(1000, update_balance) # call the function every 1000 milliseconds
 
 # def update_balance():
-#     url = "https://textbelt.com/quota/e2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqXQc1ex0kf"
+#     url = "https://textbelt.com/quota/<SAMPLE_API>"
 #     response = requests.get(url)
 #     balance = response.json().get("quotaRemaining", 0)
 #     account_balance_label["text"] = f"Remaining in Account: {balance}"
@@ -481,7 +481,7 @@ anti_crime_messages = {
 root.mainloop()
 
 # https://textbelt.com/purchase/?generateKey=1 will get you the API Key
-# e2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqXQc1ex0kf
+# e2083c182717842a1d4e7dacb2d374af80c51a2bX46e2qMf8iMXNRAqXQc1ex0kf
 
 
 
