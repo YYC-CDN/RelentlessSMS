@@ -5,6 +5,11 @@ Created on Thu Feb 16 15:15:15 2023
 @author: robrt
 """
 
+#=========================== IMPORTANT PLEASE READ ===============================
+# When you see this- it's a SAMPLE API key. You need to replace every instance with 
+# yours. e2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqXQc1ex0kf
+# In this file, they are at lines 84, 87, and 114. Any that are commented out don't matter.
+
 from tkinter import *
 import requests
 import re
