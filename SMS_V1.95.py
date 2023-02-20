@@ -130,11 +130,10 @@ def send_sms():
 
         if test_mode.get() == 1:
             # This API MUST have _test at the end, before the end quote.
-            api_key = "e2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqXQc1ex0kf_test"
+            api_key = "2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqXQc1ex0kf_test"
         else:
             # This is the regular API WItHOUT the _test at the end.
-            api_key = "e2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqXQc1ex0kf"
-
+            api_key = "2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqXQc1ex0kf"
         url = "https://textbelt.com/text"
         payload = {
             "phone": number,
@@ -166,7 +165,7 @@ def send_sms():
 
 #======================== GET ACCOUNT BALANCE FUNCTIONS ======================
     # Get account balance
-url = "https://textbelt.com/quota/e2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqXQc1ex0kff"
+url = "https://textbelt.com/quota/API"
 response = requests.get(url)
 balance = response.json().get("quotaRemaining", 0)
 
@@ -184,14 +183,12 @@ else:
     number_balance_label = Label(root, text=f"{balance}", fg='gray', font=("Segoe UI", 10))
 number_balance_label.grid(row=1, column=1, padx=185, pady=0, sticky="W")
 #====================== END GET ACCOUNT BALANCE FUNCTIONS ======================
-
 # ====================   EMAIL  TO SMS ========================================
 
 
 
 
 # ========================= END EMAIL TO SMS ==================================
-
 # =========================== ALL THE GUI =====================================
 
 # ================== Phone Number label and entry =============================
@@ -245,7 +242,6 @@ message_speed = IntVar()
 speed_entry = Entry(root, textvariable=message_speed, width=5, font=("Segoe UI", 10))
 speed_entry.grid(row=3, column=1, padx=5, pady=5, sticky=W)
 
-
 # ======================  EMAIL TO SMS =====================================
 email_sms_button = Button(root, text=" Email to SMS ", cursor="hand2",  font=("Segoe UI", 10))
 email_sms_button.grid(row=6, column=1, padx=5, pady=3, sticky="W")
@@ -262,9 +258,6 @@ message_check_button.grid(row=6, column=1, padx=105, pady=3, sticky="W")
 # ========================  SEND BUTTON =======================================
 send_button = Button(root, text=" Send Straight SMS ", cursor="hand2", command=send_sms, font=("Segoe UI", 10), bg="firebrick")
 send_button.grid(row=6, column=0, padx=3, pady=3, sticky="E")
-
-
-
 
 # ====================== Checkbox for test mode ===============================
 test_mode = IntVar()
@@ -286,7 +279,6 @@ def toggle_test_mode():
 test_checkbox.config(command=toggle_test_mode)
 # ======================END TEST MODE CHECKBOX ================================
 
-
 # ========================== RECIEPIENT MESSAGE BOX===========================
 # Reciepient box. The purpose of this is for when someone replies to my messages,
 recipient_message = Text(root, height=5, width=90, fg='gray', font=("Segoe UI", 10), wrap=WORD)
@@ -298,9 +290,6 @@ recipient_message.tag_configure("default", justify="center")
 recipient_message.grid(row=9, column=0, padx=15, pady=5, columnspan=2, sticky=W)
 # ========================== RECIEPIENT MESSAGE BOX END =======================
 
-
-
-
 # =====================  RESTRICTED VERBAGE  ==================================
 # Set hand cursor and tooltip for test_label
 # Set hand cursor and tooltip for test_label
@@ -310,10 +299,7 @@ test_label.bind("<Enter>", lambda event: show_tooltip(test_label, "Click Here Fo
 test_label.bind("<Leave>", lambda event: test_label.unbind("<Button-1>"))
 test_label.bind("<Button-1>", lambda event: open_instructions())
 
-
-
 # =====================  END RESTRICTED VERBAGE  ==============================
-
 
 # Add the logo. Right now it sits in C:\\. I'll work on location later.
 # "C:\\logo.png" and it's 135X135px.
@@ -333,9 +319,6 @@ height = 400
 x = (screen_width/2) - (width/2)
 y = (screen_height/2) - (height/2)
 root.geometry("%dx%d+%d+%d" % (width, height, x, y))
-
-
-
 
 # ============================== LANGUAGE DROPDOWN ===========================
 # I thought about using Google translate, to translate on the fly and I think it adds time.
@@ -622,4 +605,5 @@ root.mainloop()
 # $23/1700 texts (0.013 cents)
 # $45/3500 texts (0.012 cents)
 
+# https://avtech.com/articles/138/list-of-email-to-sms-addresses/
 
