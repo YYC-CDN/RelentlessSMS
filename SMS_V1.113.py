@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Feb 19 22:19:27 2023
+Created on Mon Feb 20 09:19:59 2023
 
 @author: robrt
 """
@@ -8,11 +8,15 @@ Created on Sun Feb 19 22:19:27 2023
 #
 #
 # PURPOSE: The purpose of this script is to simply annoy. I can't stand those
-# assholes who hide behind a kayboard and try to take hard earned money from
+# assholes who hide behind a keyboard and try to take hard earned money from
 # others. So I will be an asshole hiding behind a keyboard with the sole
-# purpose to disrupt and annoy you.
+# purpose to disrupt and annoy you. Fuck off with your scams.
 #
 # AUTHOR: Me & ChatGPT
+#
+# The author isn't responsible with what you do with this script Also, the 
+# author cannot and will not provide support. You gotta figure it out on your 
+# own. I did...  #sorrynotsorry
 #
 # =============================================================================
 
@@ -33,7 +37,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
-version = "1.103 "
+version = "1.113 "
 root = Tk()
 root.title("Relentless SMS® V{}".format(version))
 root.attributes("-topmost", True)
@@ -115,6 +119,9 @@ def send_sms():
     if wait_time > 900:
         messagebox.showerror("Oopsies" , "1000 seconds is 16.66 minutes. Max is 900, or one message every 15 minutes. ")
         return
+    
+
+
 
 # =================== PROGRESS BAR ==========================================
     progress_bar = ttk.Progressbar(root, orient='horizontal', length=163, mode='determinate')
@@ -161,15 +168,86 @@ def send_sms():
     messagebox.showinfo("Relentless SMS", "All messages have been sent.")
         
 # ========================= END ENTIRE SMS SEND FUNCTION =======================
+
+
+
+# ================== EMAIL CONFIGURATION ===================================
+# email configuration
+smtp_server = 'smtp.gmail.com'
+smtp_port = 587
+email = 'p2694421324@gmail.com'
+password = 'gfzmyxlgtuqvdjwl'
+
+server = smtplib.SMTP(smtp_server, smtp_port)
+server.ehlo()
+server.starttls()
+server.login(email, password)
+
+# function definitions
+def set_provider(provider):
+    provider_var.set(provider)
+
+def send_message_email(phone_number, provider):
+    # generate a random message
+    message = random.choice(anti_crime_messages_email)
+
+    # construct the email message
+
+def send_message_email(phone_number, provider, number_of_messages):
+    # Remove provider if already in phone number
+    if '@' in phone_number:
+        phone_number = phone_number.split('@')[0]
+
+    # construct the email message and send the specified number of messages
+    for i in range(number_of_messages):
+        # generate a random message
+        message = random.choice(anti_crime_messages_email)
+
+        # construct the email message
+        email_message = MIMEMultipart()
+        email_message['To'] = phone_number + provider
+        email_message['From'] = email
+        email_message['Subject'] = ""
+        email_message.attach(MIMEText(message, 'plain'))
+
+        # send the email
+        server.sendmail(email, phone_number + provider, email_message.as_string())
+
+
+anti_crime_messages_email = [
+    "Criminals are a stain on society.",
+    "Criminality is the refuge of the hopeless and the weak.",
+    "The wickedness of criminal behavior leaves a scar on society.",
+    "The world would be a better place without criminals."
+]
+
+
+send_messages_button = Button(root, text="Send Messages", cursor="hand2", command=lambda: [send_message_email() for _ in range(num_messages)], font=("Segoe UI", 10))
+send_messages_button.grid(row=2, column=1, padx=5, pady=3, sticky="W")
+    
+# send button
+email_sms_button = Button(root, text=" Email to SMS ", cursor="hand2",  font=("Segoe UI", 10), command=send_message_email)
+email_sms_button.grid(row=6, column=1, padx=5, pady=3, sticky="W")
+   
+
+# ================= END EMAIL CONFIGURATION ===================================
+
+# ====================== EMAIL TO SMS ======================================
+
 # create connection to gmail's smtp server
 # https://www.youtube.com/watch?v=IWxwWFTlTUQ
 
 # ====================== EMAIL TO SMS ======================================
-# email-to-SMS gateways for major US cellular carriers
+
+phone_number_var = StringVar()
+phone_number_entry = Entry(root, font=("Segoe UI", 10), width=30, textvariable=phone_number_var)
+phone_number_entry.grid(row=0, column=1, padx=5, pady=5, sticky=W)
+
 provider_var = StringVar()
 provider_var.set("Select Provider")
 
 provider_options = {
+    "Select Provider": "",
     "T-Mobile": "@tmomail.net",
     "AT&T": "@txt.att.net",
     "Verizon": "@vtext.com",
@@ -182,56 +260,31 @@ provider_options = {
     "Telus": "@msg.telus.com"
 }
 
-provider_dropdown = OptionMenu(root, provider_var, *provider_options.keys())
-provider_dropdown.grid(row=0, column=1, padx=230, pady=3, sticky=W)
 
-# ================== EMAIL CONFIGURATION ===================================
-smtp_server = 'smtp.gmail.com'
-smtp_port = 587
-email = 'p2694512134@gmail.com'
-password = 'gfz'
-
-server = smtplib.SMTP(smtp_server, smtp_port)
-server.ehlo()
-server.starttls()
-server.login(email, password)
-
-# ===================== FUNCTION DEFINITIONS ===============================
-def set_provider(provider):
-    provider_var.set(provider)
-
-def send_message():
-    # get the phone number and selected provider
-    phone_number = phone_number_entry.get()
-    provider = provider_options[provider_var.get()]
-
-    # generate a random message
-    message = random.choice(anti_crime_messages)
-
-    # construct the email message
-    email_message = MIMEMultipart()
-    email_message['To'] = phone_number + provider
-    email_message['From'] = email
-    email_message['Subject'] = "Anti-Crime Message"
-    email_message.attach(MIMEText(message, 'plain'))
-
-    # send the email
-    server.sendmail(email, phone_number + provider, email_message.as_string())
-
-# ======================= GUI BUTTONS =====================================
-number_of_messages = 5
-
-send_messages_button = Button(root, text="Send Messages", cursor="hand2", command=lambda: [send_message() for _ in range(number_of_messages)], font=("Segoe UI", 10))
-send_messages_button.grid(row=2, column=1, padx=5, pady=3, sticky="W")
-
-# send button
-email_sms_button = Button(root, text=" Email to SMS ", cursor="hand2", command=send_message, font=("Segoe UI", 10))
-email_sms_button.grid(row=6, column=1, padx=5, pady=3, sticky="W")   
-       
-
-# ================= END EMAIL CONFIGURATION ===================================
+def update_phone_number_entry(provider):
+    phone_number = phone_number_var.get()
+    if phone_number:
+        email_address = provider_options.get(provider, "")
+        if "@" in phone_number:
+            phone_number = phone_number.split("@")[0]
+        new_phone_number = phone_number + email_address
+        phone_number_var.set(new_phone_number)
 
 
+
+
+provider_dropdown = OptionMenu(root, provider_var, *provider_options.keys(), command=update_phone_number_entry)
+provider_dropdown.grid(row=0, column=1, padx=180, pady=3, sticky=W)
+
+
+
+
+
+
+
+
+
+# ======================END EMAIL TO SMS ==================================
 
 
 #======================== GET ACCOUNT BALANCE FUNCTIONS ======================
@@ -254,7 +307,7 @@ else:
 number_balance_label.grid(row=1, column=1, padx=185, pady=0, sticky="W")
 #====================== END GET ACCOUNT BALANCE FUNCTIONS ======================
 
-# ====================   EMAIL  TO SMS ========================================
+# ========================= EMAIL  TO SMS ========================================
 
 
 
@@ -269,53 +322,37 @@ phone_number_label.grid(row=0, column=0, padx=5, pady=5, sticky=E)
 
 
 # =================  PHONE ENTRY =============================================
-phone_number_var = StringVar()
-phone_number_entry = Entry(root, font=("Segoe UI", 10), width=30, textvariable=phone_number_var)
-phone_number_entry.grid(row=0, column=1, padx=5, pady=5, sticky=W)
 
-# ====================== EMAIL TO SMS ======================================
 
-# ======================END EMAIL TO SMS ==================================
 
-    
 
-# function to send an SMS message
-def send_sms():
-    # get the recipient's phone number and email-to-SMS gateway
-    phone_number = phone_number_entry.get()
-    gateway = gateway_var.get()
-
-    # check if the phone number and gateway are valid
-    if not phone_number or not gateway:
-        messagebox.showerror("Error", "Please enter a phone number and select a provider.")
-        return
-
-    # format the recipient's email address
-    recipient = phone_number + gateway
-
-    # get the message text
-    message = message_entry.get("1.0", END)
-
-    # send the message using the smtplib module
-    # (code to send the message is not included in this example)
-
-    # display a confirmation message
-    messagebox.showinfo("Success", "Message sent successfully.")
 
 
 # ========================= NUMBER OF MESSAGES ==================================
 number_of_messages_label = Label(root, text="Number of Messages:", font=("Segoe UI", 10))
 number_of_messages_label.grid(row=1, column=0, padx=5, pady=5, sticky=E)
-number_of_messages = IntVar()
+number_of_messages = IntVar(value=1)
 number_of_messages_entry = Entry(root, textvariable=number_of_messages, width=5)
 number_of_messages_entry.grid(row=1, column=1, padx=5, pady=5, sticky=W)
+
 def validate_number_of_messages():
     if number_of_messages.get() > 1000:
         messagebox.showerror("Really? Over 1000??", "Number of messages cannot be over 1000 at this time- thats excessive. If you want it, change this code. ")
 
 number_of_messages_entry.bind("<FocusOut>", validate_number_of_messages)
+
 # ==================== END NUMBER OF MESSAGES ==================================
 
+
+
+
+
+
+# # =========== NUMBER OF MESSAGES FOR BOTH SMS AND EMAIL =======================
+# num_messages_label = Label(root, text="Number of Messages: ", font=("Segoe UI", 10))
+# num_messages_label.grid(row=1, column=0, padx=5, pady=3, sticky=W)
+# num_messages_entry = Entry(root, font=("Segoe UI", 10))
+# num_messages_entry.grid(row=1, column=1, padx=5, pady=3, sticky=W)
 
 
 
@@ -341,7 +378,7 @@ speed_entry.grid(row=3, column=1, padx=5, pady=5, sticky=W)
 # email_sms_button.grid(row=6, column=1, padx=5, pady=3, sticky="W")
 # email_sms_button.config(state="normal")
 
-# ====== THe CLOSE ButtON ===============
+# =======================  CLOSE BUTTON =======================================
 close_button = Button(root, text="Close", cursor="hand2",  command=root.destroy, font=("Segoe UI", 10))
 close_button.grid(row=6, column=1, padx=260, pady=3, sticky="W")
 
@@ -349,21 +386,32 @@ close_button.grid(row=6, column=1, padx=260, pady=3, sticky="W")
 message_check_button = Button(root, text="   Check for new SMS   ",  font=("Segoe UI", 10), state="disabled")
 message_check_button.grid(row=6, column=1, padx=105, pady=3, sticky="W")
 
+
+
+
+# ========================= TEST MODE CHECKBOX ================================
+
 # ========================  SEND BUTTON =======================================
 send_button = Button(root, text=" Send Straight SMS ", cursor="hand2", command=send_sms, font=("Segoe UI", 10), bg="firebrick")
 send_button.grid(row=6, column=0, padx=3, pady=3, sticky="E")
+def update_send_button_state(*args):
+    if "@" in phone_number_var.get():
+        send_button.config(state="disabled", bg="grey")
+    else:
+        send_button.config(state="normal", bg="firebrick")
 
 
+phone_number_var.trace("w", update_send_button_state)
 
 
-# ====================== Checkbox for test mode ===============================
+# Checkbox for test mode
 test_mode = IntVar()
-test_checkbox = Checkbutton(root, text="Testing Mode", cursor="hand2", variable=test_mode, font=("Segoe UI", 10))
-test_checkbox.grid(row=10, column=1, padx=32, pady=0, sticky=W)
+test_checkbox = Checkbutton(root, text="Testing Mode", variable=test_mode, font=("Segoe UI", 10))
+test_checkbox.grid(row=3, column=1, padx=32, pady=0, sticky=W)
 
-# ========================= TEST MODE CHECKBOX ================================
+# Test mode label
 test_mode_label = Label(root, text="", fg='green', font=("Segoe UI", 10))
-test_mode_label.grid(row=10, column=1, padx=135, pady=0, sticky="W")
+test_mode_label.grid(row=3, column=1, padx=135, pady=0, sticky="W")
 
 def toggle_test_mode():
     if test_mode.get() == 1:
@@ -374,6 +422,7 @@ def toggle_test_mode():
         send_button.config(bg="firebrick", text=" Send Straight SMS ")
 
 test_checkbox.config(command=toggle_test_mode)
+
 # ======================END TEST MODE CHECKBOX ================================
 
 
@@ -389,6 +438,29 @@ recipient_message.grid(row=9, column=0, padx=15, pady=5, columnspan=2, sticky=W)
 # ========================== RECIEPIENT MESSAGE BOX END =======================
 
 
+# ====================== Checkbox for test mode ===============================
+# test_mode = IntVar()
+# test_checkbox = Checkbutton(root, text="Testing Mode", cursor="hand2", variable=test_mode, font=("Segoe UI", 10))
+# test_checkbox.grid(row=10, column=1, padx=32, pady=0, sticky=W)
+
+# # ========================= TEST MODE CHECKBOX ================================
+# # ========================= TEST MODE CHECKBOX ================================
+# test_mode_label = Label(root, text="", fg='green', font=("Segoe UI", 10))
+# test_mode_label.grid(row=3, column=1, padx=135, pady=0, sticky="W")
+
+# def toggle_test_mode():
+#     if test_mode.get() == 1:
+#         test_mode_label.config(text=" ACTIVATED")
+#         send_button.config(bg="green", text="     TEST MODE       ")
+#     else:
+#         test_mode_label.config(text="")
+#         send_button.config(bg="firebrick", text=" Send Straight SMS ")
+
+# test_checkbox.config(command=toggle_test_mode)
+
+
+# ======================END TEST MODE CHECKBOX ================================
+# ======================END TEST MODE CHECKBOX ================================
 
 
 # =====================  RESTRICTED VERBAGE  ==================================
