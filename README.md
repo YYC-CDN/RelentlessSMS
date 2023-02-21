@@ -24,5 +24,5 @@ Put your own API in the script between the quotes.
 
 
 ![Relentless SMS V1 121](https://user-images.githubusercontent.com/99687409/220234345-1f96def0-0532-4d57-bda0-d709fbb67cce.png)
-# RelentlessSMS
+
 ![SMS V1 121](https://user-images.githubusercontent.com/99687409/220234465-527b09ac-ae20-452c-b2ff-31e3f3d2af78.png)
