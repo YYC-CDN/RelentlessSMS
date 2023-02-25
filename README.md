@@ -1,3 +1,4 @@
+Full instructions located online at https://sites.google.com/view/damageinc/ or at damageinc.ca
 
 An SMS Repeater, designed to send multiple anti-crime SMS messages. Written in Python, it uses the Textbelt.com API. Why this one? It's the absolute easiest to use, and probably one of the least expensive. I've looked over and over and I can't find any good free solutions. So you gotta pay to play.
 
