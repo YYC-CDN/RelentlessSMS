@@ -1,3 +1,4 @@
+
 # =============================================================================
 #
 # PURPOSE: The purpose of this script is to simply annoy. I can't stand those
@@ -18,8 +19,6 @@
 # You'll need this- https://myaccount.google.com/apppasswords
 #
 # AUTHOR: Me & help from the ChatGPT- thanks bro
-#
-# https://sites.google.com/view/damageinc/and at damageinc.ca/
 #
 # this is the digital equivalent of signing someone up to receive a hundred free
 # bibles or delivering a dozen pizzas to their house. But even more annoying.
@@ -44,9 +43,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from tkinter import filedialog
 from email.mime.image import MIMEImage
-import tkinter as tk
 
-version = "1.130 "
+version = "1.129 "
 root = Tk()
 root.title("Relentless SMS® V{}".format(version))
 root.attributes("-topmost", True)
@@ -144,10 +142,10 @@ def send_sms():
 
         if test_mode.get() == 1:
             # This API MUST have _test at the end, before the end quote.
-            api_key = "e2083c182717842a1d4e7dacb2d374af80c51arrX46eqMf8iMXNRAqXQc1ex0kff_test"
+            api_key = "e2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMf8iMXNRAqc1ex0kff_test"
         else:
             # This is the regular API WItHOUT the _test at the end.
-            api_key = "e2083c182717842a1d4e7dacb2d374af80c51arrX46eqMf8iMXNRAqXQc1ex0kff"
+            api_key = "e2083c182717842a1d4e7dacb2d374af80c51a2bX46eqMiMXNRAqXQc1ex0kff"
 
         url = "https://textbelt.com/text"
         payload = {
@@ -176,27 +174,25 @@ def send_sms():
 # ================== EMAIL CONFIGURATION ===================================
 
 email_list = [
-    {'smtp_server': 'smtp.gmail.com', 'smtp_port': 587, 'email': 'p2694321324@gmail.com', 'password': 'gfzmqxlgtuqvdjwl'},
-    {'smtp_server': 'smtp.gmail.com', 'smtp_port': 587, 'email': 'p4242158581@gmail.com', 'password': 'qjinxlihkmpqnoyo'},
-    {'smtp_server': 'smtp.gmail.com', 'smtp_port': 587, 'email': 'p4032671234@gmail.com', 'password': 'zfoyzeyqtphtytjp'},
-    {'smtp_server': 'smtp.gmail.com', 'smtp_port': 587, 'email': 'p4034286400@gmail.com', 'password': 'vsgzushxprcamycw'},
-    {'smtp_server': 'smtp.gmail.com', 'smtp_port': 587, 'email': 'p4034289600@gmail.com', 'password': 'utnztrddhcwrprxr'},
-    {'smtp_server': 'smtp.gmail.com', 'smtp_port': 587, 'email': 'p4034282787@gmail.com', 'password': 'zdsqordiwjqzrbux'}
+    {'smtp_server': 'smtp.gmail.com', 'smtp_port': 587, 'email': 'p269442324@gmail.com', 'password': 'gfzmyxlguqvdjwl'},
+    {'smtp_server': 'smtp.gmail.com', 'smtp_port': 587, 'email': 'p424255881@gmail.com', 'password': 'qjinxlikmpdnoyo'},
+    {'smtp_server': 'smtp.gmail.com', 'smtp_port': 587, 'email': 'p403266234@gmail.com', 'password': 'zfoyzetphtetxjp'},
+    {'smtp_server': 'smtp.gmail.com', 'smtp_port': 587, 'email': 'p403426400@gmail.com', 'password': 'vsgzushxpsamycw'},
+    {'smtp_server': 'smtp.gmail.com', 'smtp_port': 587, 'email': 'p403486600@gmail.com', 'password': 'utnztrddcwpprxr'},
+    {'smtp_server': 'smtp.gmail.com', 'smtp_port': 587, 'email': 'p403488787@gmail.com', 'password': 'zdsqordiwjqzbbx'}
 ]
 server_list = []
 for email in email_list:
-        try:
-            server = smtplib.SMTP(email['smtp_server'], email['smtp_port'])
-            server.ehlo()
-            server.starttls()
-            server.login(email['email'], email['password'])
-            server_list.append(server)
-        except smtplib.SMTPAuthenticationError:
-            root.after(3000, lambda: messagebox.showerror("Error", f"Authentication failed for {email['email']}. Please check your email and password."))
-        except Exception as e:
-            root.after(3000, lambda: messagebox.showerror("Error", f"Unable to connect to the email server for {email['email']}.\n\n{e}"))
-
-
+    try:
+        server = smtplib.SMTP(email['smtp_server'], email['smtp_port'])
+        server.ehlo()
+        server.starttls()
+        server.login(email['email'], email['password'])
+        server_list.append(server)
+    except smtplib.SMTPAuthenticationError:
+        messagebox.showerror(f"Error: Authentication failed for {email['email']}. Please check your email and password.")
+    except:
+        messagebox.showerror(f"Error: Unable to connect to the email server for {email['email']}.")
 
 # function definitions
 def set_provider(provider):
@@ -310,7 +306,7 @@ phone_number_var.trace("w", update_send_button_state)
 
 #======================== GET ACCOUNT BALANCE FUNCTIONS ======================
     # Get account balance
-url = "https://textbelt.com/quota/e2083c182717842a1d4e7dacb2d374af80c51arrX46eqMf8iMXNRAqXQc1ex0kff"
+url = "https://textbelt.com/quota/e2083c182717842a1d4e7dacb2d374af80c51a2b6eqMf8iMXNRAqXQc1ex0kff"
 response = requests.get(url)
 balance = response.json().get("quotaRemaining", 0)
 
@@ -448,10 +444,42 @@ recipient_message.tag_configure("default", justify="center")
 recipient_message.grid(row=9, column=0, padx=15, pady=5, columnspan=2, sticky=W)
 # ========================== RECIEPIENT MESSAGE BOX END =======================
 
-# =====================  RESTRICTED VERBAGE  ==================================
 
-test_label = Label(root, text="INTERNAL CLASSIFIED USE ONLY", foreground='gray', font=("Segoe UI", 10), cursor="hand2")
+# ====================== Checkbox for test mode ===============================
+# test_mode = IntVar()
+# test_checkbox = Checkbutton(root, text="Testing Mode", cursor="hand2", variable=test_mode, font=("Segoe UI", 10))
+# test_checkbox.grid(row=10, column=1, padx=32, pady=0, sticky=W)
+
+# # ========================= TEST MODE CHECKBOX ================================
+# # ========================= TEST MODE CHECKBOX ================================
+# test_mode_label = Label(root, text="", fg='green', font=("Segoe UI", 10))
+# test_mode_label.grid(row=3, column=1, padx=135, pady=0, sticky="W")
+
+# def toggle_test_mode():
+#     if test_mode.get() == 1:
+#         test_mode_label.config(text=" ACTIVATED")
+#         send_button.config(bg="green", text="     TEST MODE       ")
+#     else:
+#         test_mode_label.config(text="")
+#         send_button.config(bg="firebrick", text=" Send Regular SMS ")
+
+# test_checkbox.config(command=toggle_test_mode)
+
+
+# ======================END TEST MODE CHECKBOX ================================
+# ======================END TEST MODE CHECKBOX ================================
+
+
+# =====================  RESTRICTED VERBAGE  ==================================
+# Set hand cursor and tooltip for test_label
+# Set hand cursor and tooltip for test_label
+test_label = ttk.Label(root, text="INTERNAL CLASSIFIED USE ONLY. README", foreground='gray', font=("Segoe UI", 10), cursor="hand2")
 test_label.grid(row=10, column=0, padx=5, pady=5, sticky="W")
+test_label.bind("<Enter>", lambda event: show_tooltip(test_label, "Click Here For Full Instructions"))
+test_label.bind("<Leave>", lambda event: test_label.unbind("<Button-1>"))
+test_label.bind("<Button-1>", lambda event: open_instructions())
+
+
 
 # =====================  END RESTRICTED VERBAGE  ==============================
 
@@ -460,7 +488,7 @@ test_label.grid(row=10, column=0, padx=5, pady=5, sticky="W")
 # "C:\\logo.png" and it's 135X135px.
 # Include error correction in case the image isn't there.
 try:
-    logo = PhotoImage(file="C:\\logo.png")
+    logo = PhotoImage(file="C:\\seal.png")
     logo_label = Label(root, image=logo)
     logo_label.grid(row=1, column=0, rowspan=7, padx=10, pady=20, sticky=W)
 except:
@@ -474,6 +502,8 @@ height = 400
 x = (screen_width/2) - (width/2)
 y = (screen_height/2) - (height/2)
 root.geometry("%dx%d+%d+%d" % (width, height, x, y))
+
+
 
 
 # ============================== LANGUAGE DROPDOWN ===========================
@@ -783,6 +813,75 @@ anti_crime_messages = {
 ]
 }
 
+# ======================= INSTRUCTIONS WINDOW =================================
+def open_link(event):
+    webbrowser.open(event.widget.tag_names(CURRENT)[0])
+
+def open_instructions():
+    instruction_window = Toplevel(root)
+    instruction_window.title("Instructions on Using Relentless SMS®")
+    instructions_text = Text(instruction_window, wrap=WORD, font=("Segoe UI", 10))
+    instructions_text.insert(INSERT, "Relentless SMS\n\n")
+    instructions_text.insert(INSERT, "1. Put in the target phone number\n")
+    instructions_text.insert(INSERT, "2. Select number of messages \n")
+    instructions_text.insert(INSERT, "3. Leave Auto Message alone \n")
+    instructions_text.insert(INSERT, "4. Input in the number of seconds between texts \n")
+    instructions_text.insert(INSERT, "5. Click Send Regular SMS \n")
+    instructions_text.insert(INSERT, "6. Testing mode doesn't go against your credits \n")
+    instructions_text.insert(INSERT, "7. You are now sending out SMS messages. Watch the progressbar \n")
+    instructions_text.insert(INSERT, "8. This is best for numbers like Google Voice, TextNow, etc. They don't have email to SMS. \n")
+    instructions_text.insert(INSERT, "\n\n")
+    instructions_text.insert(INSERT, "Using Email to Text\n\n")
+    instructions_text.insert(INSERT, "1. Enter the Target Number \n")
+    instructions_text.insert(INSERT, "2. Select the Cellular Provider (you should have this already)\n")
+    instructions_text.insert(INSERT, "3. Select the number of messages (emails) \n")
+    instructions_text.insert(INSERT, "4. Leave AutoMessage alone \n")
+    instructions_text.insert(INSERT, "5. Click Email to SMS \n")
+    instructions_text.insert(INSERT, "6. Emails are being sent. \n")
+    instructions_text.insert(INSERT, "7. Keep in mind changing speed doesn't change speed for emails. \n")
+    instructions_text.insert(INSERT, "8. There is no progress bar for emails. \n")
+    instructions_text.insert(INSERT, "9. Cap emails at 50 sends per session. Multiple addresses will give higher yield. If you push Gmail, it will push back harder. Just take it easy, becaus trust me- you are making your point known. Email to SMS will continue to come in for HOURS after you stop. \n")
+    instructions_text.insert(INSERT, "This method is best used for numbers you can verify that are on a wireless carrier. No cost. \n")
+    instructions_text.insert(INSERT, "\n\n")
+    instructions_text.insert(INSERT, "")
+    instructions_text.insert(INSERT, "The logo is located on the C: drive. It's called seal.png or logo.png. It's a simple circle logo generated in OpenAI with a transparent background. If there is no logo there, the script will ignore it and continue.\n\n")
+    instructions_text.insert(INSERT, "Portions of code from ")
+    instructions_text.insert(INSERT, "https://chat.openai.com", ('link',))
+    instructions_text.insert(INSERT, "\nGraphics from ")
+    instructions_text.insert(INSERT, "https://openai.com/dall-e-2/", ('link',))
+    instructions_text.insert(INSERT, "\nAPI is from ")
+    instructions_text.insert(INSERT, "https://textbelt.com/purchase/?generateKey=1", ('link',))
+    instructions_text.insert(INSERT, "\nCurrently using Gmail for SMTP ")
+    instructions_text.insert(INSERT, "")
+    instructions_text.insert(INSERT, "\n\nWatch this to explain using SMTP here- You need this for emails. Gmail will work after you follow those instructions, even in 2023. ")
+    instructions_text.insert(INSERT, "https://www.youtube.com/watch?v=IWxwWFTlTUQ", ('link',))
+    instructions_text.insert(INSERT, "\n\nGoogle SMTP Error Codes ")
+    instructions_text.insert(INSERT, "https://support.google.com/a/answer/3726730?hl=en", ('link',))
+    instructions_text.insert(INSERT, "")
+    instructions_text.config(state=DISABLED)
+
+    # Make hyperlinks clickable
+    instructions_text.tag_config('link', foreground='blue', underline=1)
+    instructions_text.tag_bind('link', '<Button-1>', open_link)
+
+    instructions_text.pack(fill=BOTH, expand=YES)
+
+    instruction_window.geometry("700x500")
+    instruction_window.config(bg='grey')
+    
+
+  # Callback function to destroy the window and quit the main event loop
+    def on_close():
+        instruction_window.destroy()
+        root.quit()
+
+    # Bind the protocol method to the WM_DELETE_WINDOW event
+    instruction_window.protocol("WM_DELETE_WINDOW", on_close)
+
+    instruction_window.mainloop()
+
+def open_link(event):
+    webbrowser.open_new(event.widget.tag_names(CURRENT)[0])
 
 # ============================================================================
 root.mainloop()
